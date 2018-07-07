@@ -89,6 +89,8 @@ public:
    * matrix
    * @param delta_t Time between k and k+1 in s
    */
+   
+  void CalculatePrediction(std::vector<double>& sp,double dt,std::vector<double>& spred);
   void Prediction(double delta_t);
 
   /**
