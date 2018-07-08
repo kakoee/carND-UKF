@@ -132,12 +132,19 @@ int main()
           json msgJson;
           msgJson["estimate_x"] = p_x;
           msgJson["estimate_y"] = p_y;
+
+          //adding new variables for debug
+          msgJson["v"] = v;
+          msgJson["yaw"] = yaw;          
+          msgJson["Laser NIS"] = ukf.laser_nis_;
+          msgJson["Radar NIS"] = ukf.radar_nis_;          
+          // end new variables
           msgJson["rmse_x"] =  RMSE(0);
           msgJson["rmse_y"] =  RMSE(1);
           msgJson["rmse_vx"] = RMSE(2);
           msgJson["rmse_vy"] = RMSE(3);
           auto msg = "42[\"estimate_marker\"," + msgJson.dump() + "]";
-          // std::cout << msg << std::endl;
+          std::cout << msg << std::endl;
           ws.send(msg.data(), msg.length(), uWS::OpCode::TEXT);
 	  
         }
